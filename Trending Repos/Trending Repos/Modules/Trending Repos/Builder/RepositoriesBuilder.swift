@@ -14,7 +14,7 @@ class RepositoriesBuilder {
         let interactor = RepositoriesInteractor(networkManager: networkManager)
         let router = RepositoriesRouter()
         let presenter = RepositoriesPresenter(interactor: interactor, router: router)
-        let viewController = RepositoriesViewController()
+        let viewController = RepositoriesViewController.instantiate(fromStoryBoards: .Main)
         
         interactor.output = presenter
         presenter.view = viewController

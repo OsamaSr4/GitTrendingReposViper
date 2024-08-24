@@ -2,6 +2,10 @@ import UIKit
 import Lottie
 
 class RepositoriesViewController: UIViewController {
+    
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     var presenter: RepositoriesPresenterInput!
     private var repositories: [Repository] = []
     private var animationView: LottieAnimationView?
@@ -17,6 +21,7 @@ class RepositoriesViewController: UIViewController {
     private func setupViews() {
         setupAnimationView()
         setupRetryButton()
+        registerCells()
     }
     
     private func setupAnimationView() {
@@ -31,12 +36,12 @@ class RepositoriesViewController: UIViewController {
     private func setupRetryButton() {
         retryButton = UIButton(type: .system)
         retryButton?.setTitle("Retry", for: .normal)
-        retryButton?.setTitleColor(.green, for: .normal)  // Set text color to green
-        retryButton?.layer.borderWidth = 1  // Set border width
-        retryButton?.layer.borderColor = UIColor.green.cgColor  // Set border color to green
-        retryButton?.layer.cornerRadius = 5  // Optional: add corner radius for rounded corners
-        retryButton?.frame = CGRect(x: 20, y: view.bounds.height - 70, width: view.bounds.width - 40, height: 50)  // Leading and trailing 20, height 50
-        retryButton?.isHidden = true  // Hide initially
+        retryButton?.setTitleColor(UIColor(hexString: "#307279"), for: .normal)
+        retryButton?.layer.borderWidth = 1
+        retryButton?.layer.borderColor = UIColor(hexString: "#307279").cgColor
+        retryButton?.layer.cornerRadius = 5
+        retryButton?.frame = CGRect(x: 20, y: view.bounds.height - 100, width: view.bounds.width - 40, height: 50)
+        retryButton?.isHidden = true
         retryButton?.addTarget(self, action: #selector(retryButtonTapped), for: .touchUpInside)
         view.addSubview(retryButton!)
     }
@@ -46,8 +51,10 @@ class RepositoriesViewController: UIViewController {
     }
 }
 
+//MARK: Presenter Output
 extension RepositoriesViewController: RepositoriesPresenterOutput {
     func displayRepositories(_ repositories: [Repository]) {
+        
         Task { @MainActor in
             self.animationView?.isHidden = true
             self.retryButton?.isHidden = true
@@ -55,12 +62,28 @@ extension RepositoriesViewController: RepositoriesPresenterOutput {
     }
     
     func displayError(_ message: String) {
-        // Show error, play Lottie animation, and show retry button
         print("Error Message :", message)
         Task { @MainActor in
             self.animationView?.isHidden = false
             self.retryButton?.isHidden = false
             self.animationView?.play()
         }
+    }
+}
+
+//MARK: Table View Delegate And DataSource and UISetup
+extension RepositoriesViewController : UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    
+    private func registerCells(){
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        tableView.register(UINib(nibName: RepositoriesCell.name, bundle: nil), forCellReuseIdentifier: RepositoriesCell.getIdentifier())
     }
 }

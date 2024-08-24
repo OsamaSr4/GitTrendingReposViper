@@ -26,17 +26,12 @@ class NetworkManager: NetworkManaging {
     func request<T: Codable>(_ target: URLRequestConvertible) async throws -> T {
         return try await withCheckedThrowingContinuation { continuation in
             print("Target",target)
-            session.request(target).responseData { response in
+            session.request(target).responseDecodable(of: T.self) { response in
                 switch response.result {
-                case .success(let data):
-                    print("Response:",T.self)
-                    do {
-                        let value = try self.decoder.decode(T.self, from: data)
-                        continuation.resume(with: .success(value))
-                    } catch {
-                        continuation.resume(with: .failure(error))
-                    }
+                case .success(let value):
+                    continuation.resume(with: .success(value))
                 case .failure(let error):
+                    print("Request error:", error)
                     continuation.resume(with: .failure(error))
                 }
             }

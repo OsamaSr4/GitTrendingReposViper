@@ -29,6 +29,12 @@
 		5269E8542C7A88300002A1E2 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 5269E8532C7A88300002A1E2 /* Lottie */; };
 		5269E8562C7A892B0002A1E2 /* NoInternetAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 5269E8552C7A892B0002A1E2 /* NoInternetAnimation.json */; };
 		5269E85A2C7A90FF0002A1E2 /* Extenson + UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5269E8592C7A90FF0002A1E2 /* Extenson + UIColor.swift */; };
+		5269E85E2C7A933F0002A1E2 /* RepositoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5269E85C2C7A933F0002A1E2 /* RepositoriesCell.swift */; };
+		5269E85F2C7A933F0002A1E2 /* RepositoriesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5269E85D2C7A933F0002A1E2 /* RepositoriesCell.xib */; };
+		5269E8612C7A93770002A1E2 /* Helper Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5269E8602C7A93770002A1E2 /* Helper Protocols.swift */; };
+		5269E8642C7A98B10002A1E2 /* Extension + UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5269E8632C7A98B10002A1E2 /* Extension + UIImageView.swift */; };
+		5269E8662C7A9B810002A1E2 /* StoryBoardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5269E8652C7A9B810002A1E2 /* StoryBoardHelper.swift */; };
+		5269E8682C7A9BA30002A1E2 /* Extension + UIViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5269E8672C7A9BA30002A1E2 /* Extension + UIViewcontroller.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +79,12 @@
 		5269E8502C7A84C40002A1E2 /* RepositoriesBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesBuilder.swift; sourceTree = "<group>"; };
 		5269E8552C7A892B0002A1E2 /* NoInternetAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NoInternetAnimation.json; sourceTree = "<group>"; };
 		5269E8592C7A90FF0002A1E2 /* Extenson + UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extenson + UIColor.swift"; sourceTree = "<group>"; };
+		5269E85C2C7A933F0002A1E2 /* RepositoriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesCell.swift; sourceTree = "<group>"; };
+		5269E85D2C7A933F0002A1E2 /* RepositoriesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepositoriesCell.xib; sourceTree = "<group>"; };
+		5269E8602C7A93770002A1E2 /* Helper Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Helper Protocols.swift"; sourceTree = "<group>"; };
+		5269E8632C7A98B10002A1E2 /* Extension + UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIImageView.swift"; sourceTree = "<group>"; };
+		5269E8652C7A9B810002A1E2 /* StoryBoardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBoardHelper.swift; sourceTree = "<group>"; };
+		5269E8672C7A9BA30002A1E2 /* Extension + UIViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIViewcontroller.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,7 +139,7 @@
 			children = (
 				5269E8582C7A90EC0002A1E2 /* Supporting Files */,
 				5269E8312C7A42530002A1E2 /* Resource */,
-				5269E8302C7A42090002A1E2 /* Managers */,
+				5269E8302C7A42090002A1E2 /* Network */,
 				5269E82F2C7A41FE0002A1E2 /* Modules */,
 				5269E82E2C7A41ED0002A1E2 /* App */,
 				5269E80C2C7A3F4D0002A1E2 /* Info.plist */,
@@ -169,21 +181,21 @@
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		5269E8302C7A42090002A1E2 /* Managers */ = {
+		5269E8302C7A42090002A1E2 /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				5269E8392C7A7DF20002A1E2 /* NetworkManager.swift */,
 				5269E8472C7A82C70002A1E2 /* API Router.swift */,
 			);
-			path = Managers;
+			path = Network;
 			sourceTree = "<group>";
 		};
 		5269E8312C7A42530002A1E2 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
 				5269E8572C7A89360002A1E2 /* Lottie Animation */,
-				5269E8042C7A3F4A0002A1E2 /* Main.storyboard */,
 				5269E8072C7A3F4D0002A1E2 /* Assets.xcassets */,
+				5269E8042C7A3F4A0002A1E2 /* Main.storyboard */,
 				5269E8092C7A3F4D0002A1E2 /* LaunchScreen.storyboard */,
 			);
 			path = Resource;
@@ -205,6 +217,7 @@
 		5269E8332C7A42A60002A1E2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5269E85B2C7A93240002A1E2 /* Cells */,
 				5269E8022C7A3F4A0002A1E2 /* RepositoriesViewController.swift */,
 			);
 			path = Views;
@@ -263,9 +276,30 @@
 		5269E8582C7A90EC0002A1E2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				5269E8592C7A90FF0002A1E2 /* Extenson + UIColor.swift */,
+				5269E8622C7A937D0002A1E2 /* Extension */,
+				5269E8602C7A93770002A1E2 /* Helper Protocols.swift */,
+				5269E8652C7A9B810002A1E2 /* StoryBoardHelper.swift */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5269E85B2C7A93240002A1E2 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				5269E85C2C7A933F0002A1E2 /* RepositoriesCell.swift */,
+				5269E85D2C7A933F0002A1E2 /* RepositoriesCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		5269E8622C7A937D0002A1E2 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				5269E8592C7A90FF0002A1E2 /* Extenson + UIColor.swift */,
+				5269E8632C7A98B10002A1E2 /* Extension + UIImageView.swift */,
+				5269E8672C7A9BA30002A1E2 /* Extension + UIViewcontroller.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -382,6 +416,7 @@
 			files = (
 				5269E8562C7A892B0002A1E2 /* NoInternetAnimation.json in Resources */,
 				5269E80B2C7A3F4D0002A1E2 /* LaunchScreen.storyboard in Resources */,
+				5269E85F2C7A933F0002A1E2 /* RepositoriesCell.xib in Resources */,
 				5269E8082C7A3F4D0002A1E2 /* Assets.xcassets in Resources */,
 				5269E8062C7A3F4A0002A1E2 /* Main.storyboard in Resources */,
 			);
@@ -408,6 +443,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5269E8682C7A9BA30002A1E2 /* Extension + UIViewcontroller.swift in Sources */,
 				5269E8482C7A82C70002A1E2 /* API Router.swift in Sources */,
 				5269E85A2C7A90FF0002A1E2 /* Extenson + UIColor.swift in Sources */,
 				5269E84C2C7A833F0002A1E2 /* RepositoriesRouter.swift in Sources */,
@@ -417,8 +453,12 @@
 				5269E8422C7A81D10002A1E2 /* RepositoriesInteractor.swift in Sources */,
 				5269E84A2C7A831D0002A1E2 /* RepositoriesPresenter.swift in Sources */,
 				5269E8402C7A81980002A1E2 /* RepositorySearchResult.swift in Sources */,
+				5269E8662C7A9B810002A1E2 /* StoryBoardHelper.swift in Sources */,
+				5269E8612C7A93770002A1E2 /* Helper Protocols.swift in Sources */,
 				5269E83C2C7A80920002A1E2 /* Repositories.swift in Sources */,
 				5269E8032C7A3F4A0002A1E2 /* RepositoriesViewController.swift in Sources */,
+				5269E8642C7A98B10002A1E2 /* Extension + UIImageView.swift in Sources */,
+				5269E85E2C7A933F0002A1E2 /* RepositoriesCell.swift in Sources */,
 				5269E7FF2C7A3F4A0002A1E2 /* AppDelegate.swift in Sources */,
 				5269E8012C7A3F4A0002A1E2 /* SceneDelegate.swift in Sources */,
 			);
