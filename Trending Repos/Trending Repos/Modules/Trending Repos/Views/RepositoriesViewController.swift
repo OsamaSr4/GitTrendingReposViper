@@ -123,7 +123,6 @@ extension RepositoriesViewController: RepositoriesPresenterOutput {
     func displayError(_ message: String) {
         print("Error Message :", message)
         Task { @MainActor in
-            try? await Task.sleep(nanoseconds: presenter.threadConstant)
             self.showAnimationView()
             self.animationView?.play()
         }

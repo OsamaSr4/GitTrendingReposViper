@@ -22,10 +22,10 @@
                         <rect key="frame" x="10" y="5" width="356" height="71"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S5R-oa-llO">
-                                <rect key="frame" x="10" y="20.666666666666671" width="30" height="30"/>
+                                <rect key="frame" x="10" y="13" width="45" height="45"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vn6-lb-CE3">
-                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                         </userDefinedRuntimeAttributes>
@@ -33,10 +33,10 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="A1F-Xm-SFD"/>
+                                    <constraint firstAttribute="height" constant="45" id="A1F-Xm-SFD"/>
                                     <constraint firstItem="vn6-lb-CE3" firstAttribute="leading" secondItem="S5R-oa-llO" secondAttribute="leading" id="EDv-ZW-Yce"/>
                                     <constraint firstAttribute="bottom" secondItem="vn6-lb-CE3" secondAttribute="bottom" id="cc4-xc-1Je"/>
-                                    <constraint firstAttribute="width" constant="30" id="ewo-EK-xf2"/>
+                                    <constraint firstAttribute="width" constant="45" id="ewo-EK-xf2"/>
                                     <constraint firstAttribute="trailing" secondItem="vn6-lb-CE3" secondAttribute="trailing" id="jlg-bm-mjh"/>
                                     <constraint firstItem="vn6-lb-CE3" firstAttribute="top" secondItem="S5R-oa-llO" secondAttribute="top" id="yt7-Gb-cWN"/>
                                 </constraints>
@@ -45,10 +45,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1JG-UH-nxR">
-                                <rect key="frame" x="50" y="10.333333333333332" width="296" height="50.666666666666671"/>
+                                <rect key="frame" x="65" y="10.333333333333332" width="281" height="50.666666666666671"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OsamaSr4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJR-qV-TUI">
-                                        <rect key="frame" x="0.0" y="0.0" width="296" height="20.333333333333332"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="281" height="20.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -57,7 +57,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TrendingRepos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rIg-dD-dnM">
-                                        <rect key="frame" x="0.0" y="30.333333333333329" width="296" height="20.333333333333329"/>
+                                        <rect key="frame" x="0.0" y="30.333333333333329" width="281" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>

@@ -23,15 +23,8 @@ class RepositoriesCell: UITableViewCell ,IdentifiableCell{
     }
     
    private func setupCell(){
-       self.avatar_background_view.isSkeletonable = true
-       self.avatar_image.isSkeletonable = true
-       self.repo_name.isSkeletonable = true
-       self.user_name.isSkeletonable = true
-        Task { @MainActor in
-            self.avatar_image.layer.cornerRadius = self.avatar_image.bounds.width / 2
-            self.avatar_background_view.layer.cornerRadius = self.avatar_background_view.bounds.width / 2
-        }
-        
+       self.avatar_image.layer.cornerRadius = self.avatar_image.bounds.height / 2
+       self.avatar_background_view.layer.cornerRadius = self.avatar_background_view.bounds.height / 2
     }
     
     func configure(with repository: Repository) {
