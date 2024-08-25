@@ -8,8 +8,8 @@
 import Foundation
 import Alamofire
 
-enum GitHubAPIRouter: URLRequestConvertible {
-    case searchRepositories(query: String)
+enum APIRouter: URLRequestConvertible {
+    case searchRepositories(query: String, page: Int)
     
     var method: HTTPMethod {
         switch self {
@@ -27,8 +27,8 @@ enum GitHubAPIRouter: URLRequestConvertible {
     
     var parameters: [String: Any] {
         switch self {
-        case .searchRepositories(let query):
-            return ["q": query]
+        case .searchRepositories(let query, let page):
+            return ["q": query, "sort": "stars", "order": "desc", "page": page, "per_page": 10]
         }
     }
     

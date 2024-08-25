@@ -6,7 +6,7 @@ class RepositoriesViewController: UIViewController {
     
     struct Constants {
         var errorTitle = "Something went wrong"
-        var errorDescription = "An alien is probably blocking you signals"
+        var errorDescription = "An alien is probably blocking your signals"
     }
     
     @IBOutlet weak var tableView: UITableView!
@@ -17,8 +17,8 @@ class RepositoriesViewController: UIViewController {
     private var retryButton: UIButton?
     private var headingLabel: UILabel!
     private var descriptionLabel: UILabel!
-    
-    
+    private var loadingFooterView: UIView?
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -30,6 +30,7 @@ class RepositoriesViewController: UIViewController {
         setupAnimationView()
         setupRetryButton()
         setupLabels()
+        setupLoadingFooterView()
     }
     
     private func setupAnimationView() {
@@ -52,7 +53,6 @@ class RepositoriesViewController: UIViewController {
         retryButton?.isHidden = true
         retryButton?.addTarget(self, action: #selector(retryButtonTapped), for: .touchUpInside)
         view.addSubview(retryButton!)
-        
     }
     
     private func setupLabels() {
@@ -72,26 +72,31 @@ class RepositoriesViewController: UIViewController {
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(descriptionLabel)
         
-        // Set up constraints for labels
         NSLayoutConstraint.activate([
-            // Constraints for headingLabel
             headingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             headingLabel.topAnchor.constraint(equalTo: animationView!.bottomAnchor, constant: 20),
-            
-            // Constraints for descriptionLabel
             descriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             descriptionLabel.topAnchor.constraint(equalTo: headingLabel.bottomAnchor, constant: 8)
         ])
-        
     }
     
     @objc private func retryButtonTapped() {
         presenter.didTapRetry()
         hideAnimationView()
     }
+    
+    
+    private func setupLoadingFooterView() {
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 50))
+        let activityIndicator = UIActivityIndicatorView(style: .medium)
+        activityIndicator.center = footerView.center
+        activityIndicator.startAnimating()
+        footerView.addSubview(activityIndicator)
+        loadingFooterView = footerView
+    }
 }
 
-//MARK: Skeleton Loader
+// MARK: Skeleton Loader
 extension RepositoriesViewController {
     private func showSkeletonLoader() {
         tableView.showSkeleton(usingColor: .lightGray, transition: .crossDissolve(0.25))
@@ -103,17 +108,16 @@ extension RepositoriesViewController {
     }
 }
 
-//MARK: Presenter Output
+// MARK: Presenter Output
 extension RepositoriesViewController: RepositoriesPresenterOutput {
     func showSkeletonLoader(_ bool: Bool) {
-        Task{
-            await bool ?  showSkeletonLoader() : hideSkeletonLoader()
+        Task {
+            await bool ? showSkeletonLoader() : hideSkeletonLoader()
         }
-        
     }
     
-    func displayRepositories(_ repositories: [Repository]) {
-        self.repositories = repositories
+    func displayRepositories(_ newRepositories: [Repository]) {
+        self.repositories.append(contentsOf: newRepositories)
         Task { @MainActor in
             self.hideAnimationView()
             self.tableView.reloadData()
@@ -121,7 +125,7 @@ extension RepositoriesViewController: RepositoriesPresenterOutput {
     }
     
     func displayError(_ message: String) {
-        print("Error Message :", message)
+        print("Error Message:", message)
         Task { @MainActor in
             self.showAnimationView()
             self.animationView?.play()
@@ -129,7 +133,8 @@ extension RepositoriesViewController: RepositoriesPresenterOutput {
     }
     
     @MainActor
-    private func hideAnimationView(){
+    private func hideAnimationView() {
+        self.tableView.isHidden = false
         self.animationView?.isHidden = true
         self.retryButton?.isHidden = true
         self.headingLabel.isHidden = true
@@ -137,7 +142,8 @@ extension RepositoriesViewController: RepositoriesPresenterOutput {
     }
     
     @MainActor
-    private func showAnimationView(){
+    private func showAnimationView() {
+        self.tableView.isHidden = true
         self.animationView?.isHidden = false
         self.retryButton?.isHidden = false
         self.headingLabel.isHidden = false
@@ -145,8 +151,8 @@ extension RepositoriesViewController: RepositoriesPresenterOutput {
     }
 }
 
-//MARK: Table View Delegate And DataSource and UISetup
-extension RepositoriesViewController : UITableViewDelegate, SkeletonTableViewDataSource{
+// MARK: Table View Delegate And DataSource
+extension RepositoriesViewController: UITableViewDelegate, SkeletonTableViewDataSource {
     
     func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
         return RepositoriesCell.name
@@ -157,14 +163,23 @@ extension RepositoriesViewController : UITableViewDelegate, SkeletonTableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: RepositoriesCell.name, for: indexPath) as? RepositoriesCell else {return UITableViewCell()
-        }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: RepositoriesCell.name, for: indexPath) as? RepositoriesCell else { return UITableViewCell() }
         let data = repositories[indexPath.row]
         cell.configure(with: data)
         return cell
     }
     
-    private func setupTableView(){
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        
+        if offsetY > contentHeight - scrollView.frame.size.height {
+            tableView.tableFooterView = loadingFooterView
+            presenter.fetchNextPage()
+        }
+    }
+    
+    private func setupTableView() {
         self.tableView.isSkeletonable = true
         self.tableView.delegate = self
         self.tableView.dataSource = self

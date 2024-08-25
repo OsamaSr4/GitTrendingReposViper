@@ -8,11 +8,11 @@
 import Foundation
 
 protocol RepositoriesInteractorInput {
-    func fetchRepositories(query: String)
+    func fetchRepositories(query: String, page: Int)
 }
 
 protocol RepositoriesInteractorOutput: AnyObject {
-    func didFetchRepositories(_ repositories: [Repository])
+    func didFetchRepositories(_ repositories: [Repository], hasMore: Bool)
     func didFailToFetchRepositories(with error: Error)
 }
 
@@ -24,11 +24,12 @@ class RepositoriesInteractor: RepositoriesInteractorInput {
         self.networkManager = networkManager
     }
     
-    func fetchRepositories(query: String) {
+    func fetchRepositories(query: String, page: Int) {
         Task {
             do {
-                let result: RepositorySearchResult = try await networkManager.request(GitHubAPIRouter.searchRepositories(query: query))
-                output?.didFetchRepositories(result.items)
+                let result: RepositorySearchResult = try await networkManager.request(APIRouter.searchRepositories(query: query, page: page))
+                let hasMore = result.items.count == 10 // Assuming 10 items per page
+                output?.didFetchRepositories(result.items, hasMore: hasMore)
             } catch {
                 output?.didFailToFetchRepositories(with: error)
             }
