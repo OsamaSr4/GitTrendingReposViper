@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -25,6 +26,9 @@
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vn6-lb-CE3">
                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -36,6 +40,9 @@
                                     <constraint firstAttribute="trailing" secondItem="vn6-lb-CE3" secondAttribute="trailing" id="jlg-bm-mjh"/>
                                     <constraint firstItem="vn6-lb-CE3" firstAttribute="top" secondItem="S5R-oa-llO" secondAttribute="top" id="yt7-Gb-cWN"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1JG-UH-nxR">
                                 <rect key="frame" x="50" y="10.333333333333332" width="296" height="50.666666666666671"/>
@@ -45,14 +52,23 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TrendingRepos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rIg-dD-dnM">
                                         <rect key="frame" x="0.0" y="30.333333333333329" width="296" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                 </subviews>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -63,6 +79,9 @@
                             <constraint firstItem="1JG-UH-nxR" firstAttribute="centerY" secondItem="aIl-Ov-IKS" secondAttribute="centerY" id="oEm-3f-84o"/>
                             <constraint firstAttribute="trailing" secondItem="1JG-UH-nxR" secondAttribute="trailing" constant="10" id="tHe-mU-750"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
                 <constraints>
@@ -71,9 +90,16 @@
                     <constraint firstAttribute="bottom" secondItem="aIl-Ov-IKS" secondAttribute="bottom" constant="5" id="sne-bz-iEa"/>
                     <constraint firstAttribute="trailing" secondItem="aIl-Ov-IKS" secondAttribute="trailing" constant="10" id="uyw-Mg-FLz"/>
                 </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                </userDefinedRuntimeAttributes>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
             <connections>
+                <outlet property="avatar_background_view" destination="S5R-oa-llO" id="Ttw-tG-wer"/>
                 <outlet property="avatar_image" destination="vn6-lb-CE3" id="oIj-ES-nON"/>
                 <outlet property="repo_name" destination="rIg-dD-dnM" id="gO6-mM-n7Y"/>
                 <outlet property="user_name" destination="rJR-qV-TUI" id="60D-V1-cVz"/>

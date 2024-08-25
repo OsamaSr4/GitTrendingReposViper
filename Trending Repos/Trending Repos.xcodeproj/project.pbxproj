@@ -32,9 +32,10 @@
 		5269E85E2C7A933F0002A1E2 /* RepositoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5269E85C2C7A933F0002A1E2 /* RepositoriesCell.swift */; };
 		5269E85F2C7A933F0002A1E2 /* RepositoriesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5269E85D2C7A933F0002A1E2 /* RepositoriesCell.xib */; };
 		5269E8612C7A93770002A1E2 /* Helper Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5269E8602C7A93770002A1E2 /* Helper Protocols.swift */; };
-		5269E8642C7A98B10002A1E2 /* Extension + UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5269E8632C7A98B10002A1E2 /* Extension + UIImageView.swift */; };
+		5269E8642C7A98B10002A1E2 /* Extension + UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5269E8632C7A98B10002A1E2 /* Extension + UIImage.swift */; };
 		5269E8662C7A9B810002A1E2 /* StoryBoardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5269E8652C7A9B810002A1E2 /* StoryBoardHelper.swift */; };
 		5269E8682C7A9BA30002A1E2 /* Extension + UIViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5269E8672C7A9BA30002A1E2 /* Extension + UIViewcontroller.swift */; };
+		5269E86B2C7AA4530002A1E2 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = 5269E86A2C7AA4530002A1E2 /* SkeletonView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,7 +83,7 @@
 		5269E85C2C7A933F0002A1E2 /* RepositoriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesCell.swift; sourceTree = "<group>"; };
 		5269E85D2C7A933F0002A1E2 /* RepositoriesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepositoriesCell.xib; sourceTree = "<group>"; };
 		5269E8602C7A93770002A1E2 /* Helper Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Helper Protocols.swift"; sourceTree = "<group>"; };
-		5269E8632C7A98B10002A1E2 /* Extension + UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIImageView.swift"; sourceTree = "<group>"; };
+		5269E8632C7A98B10002A1E2 /* Extension + UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIImage.swift"; sourceTree = "<group>"; };
 		5269E8652C7A9B810002A1E2 /* StoryBoardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBoardHelper.swift; sourceTree = "<group>"; };
 		5269E8672C7A9BA30002A1E2 /* Extension + UIViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIViewcontroller.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,6 +94,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5269E8462C7A827E0002A1E2 /* Alamofire in Frameworks */,
+				5269E86B2C7AA4530002A1E2 /* SkeletonView in Frameworks */,
 				5269E8542C7A88300002A1E2 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,7 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				5269E8592C7A90FF0002A1E2 /* Extenson + UIColor.swift */,
-				5269E8632C7A98B10002A1E2 /* Extension + UIImageView.swift */,
+				5269E8632C7A98B10002A1E2 /* Extension + UIImage.swift */,
 				5269E8672C7A9BA30002A1E2 /* Extension + UIViewcontroller.swift */,
 			);
 			path = Extension;
@@ -321,6 +323,7 @@
 			packageProductDependencies = (
 				5269E8452C7A827E0002A1E2 /* Alamofire */,
 				5269E8532C7A88300002A1E2 /* Lottie */,
+				5269E86A2C7AA4530002A1E2 /* SkeletonView */,
 			);
 			productName = "Trending Repos";
 			productReference = 5269E7FB2C7A3F4A0002A1E2 /* Trending Repos.app */;
@@ -397,6 +400,7 @@
 			packageReferences = (
 				5269E8442C7A827E0002A1E2 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				5269E8522C7A88300002A1E2 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				5269E8692C7AA4530002A1E2 /* XCRemoteSwiftPackageReference "SkeletonView" */,
 			);
 			productRefGroup = 5269E7FC2C7A3F4A0002A1E2 /* Products */;
 			projectDirPath = "";
@@ -457,7 +461,7 @@
 				5269E8612C7A93770002A1E2 /* Helper Protocols.swift in Sources */,
 				5269E83C2C7A80920002A1E2 /* Repositories.swift in Sources */,
 				5269E8032C7A3F4A0002A1E2 /* RepositoriesViewController.swift in Sources */,
-				5269E8642C7A98B10002A1E2 /* Extension + UIImageView.swift in Sources */,
+				5269E8642C7A98B10002A1E2 /* Extension + UIImage.swift in Sources */,
 				5269E85E2C7A933F0002A1E2 /* RepositoriesCell.swift in Sources */,
 				5269E7FF2C7A3F4A0002A1E2 /* AppDelegate.swift in Sources */,
 				5269E8012C7A3F4A0002A1E2 /* SceneDelegate.swift in Sources */,
@@ -649,6 +653,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -676,6 +681,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -819,6 +825,14 @@
 				minimumVersion = 4.5.0;
 			};
 		};
+		5269E8692C7AA4530002A1E2 /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.31.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -831,6 +845,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5269E8522C7A88300002A1E2 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		5269E86A2C7AA4530002A1E2 /* SkeletonView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5269E8692C7AA4530002A1E2 /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			productName = SkeletonView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

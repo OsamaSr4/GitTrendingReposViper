@@ -16,17 +16,19 @@ class NetworkManager: NetworkManaging {
     private let session: Session
     private let decoder: JSONDecoder
     
-    init(session: Session = .default, decoder: JSONDecoder = JSONDecoder()) {
-        self.session = session
+    init(timeoutInterval: TimeInterval = 60.0, decoder: JSONDecoder = JSONDecoder()) {
         self.decoder = decoder
-        
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = timeoutInterval
+        configuration.timeoutIntervalForResource = timeoutInterval
+        self.session = Session(configuration: configuration)
         decoder.keyDecodingStrategy = .convertFromSnakeCase
     }
     
     func request<T: Codable>(_ target: URLRequestConvertible) async throws -> T {
         return try await withCheckedThrowingContinuation { continuation in
             print("Target",target)
-            session.request(target).responseDecodable(of: T.self) { response in
+            session.request(target).validate().responseDecodable(of: T.self) { response in
                 switch response.result {
                 case .success(let value):
                     continuation.resume(with: .success(value))

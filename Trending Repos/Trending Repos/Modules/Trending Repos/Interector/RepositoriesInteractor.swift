@@ -28,7 +28,6 @@ class RepositoriesInteractor: RepositoriesInteractorInput {
         Task {
             do {
                 let result: RepositorySearchResult = try await networkManager.request(GitHubAPIRouter.searchRepositories(query: query))
-                print("Results", result)
                 output?.didFetchRepositories(result.items)
             } catch {
                 output?.didFailToFetchRepositories(with: error)

@@ -10,7 +10,8 @@ import UIKit
 
 class RepositoriesBuilder {
     static func build() -> UIViewController {
-        let networkManager = NetworkManager()
+        let timeoutInterval: TimeInterval = 10.0
+        let networkManager = NetworkManager(timeoutInterval: timeoutInterval)
         let interactor = RepositoriesInteractor(networkManager: networkManager)
         let router = RepositoriesRouter()
         let presenter = RepositoriesPresenter(interactor: interactor, router: router)

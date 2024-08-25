@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import SkeletonView
 
 class RepositoriesCell: UITableViewCell ,IdentifiableCell{
     
+    @IBOutlet weak var avatar_background_view: UIView!
     @IBOutlet weak var avatar_image: UIImageView!
     @IBOutlet weak var repo_name: UILabel!
     @IBOutlet weak var user_name: UILabel!
@@ -17,10 +19,20 @@ class RepositoriesCell: UITableViewCell ,IdentifiableCell{
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        avatar_image.setupCircularProgress(trackColor: UIColor(hexString: "#307279"), progressColor: .blue)
-        
+        setupCell()
     }
     
+   private func setupCell(){
+       self.avatar_background_view.isSkeletonable = true
+       self.avatar_image.isSkeletonable = true
+       self.repo_name.isSkeletonable = true
+       self.user_name.isSkeletonable = true
+        Task { @MainActor in
+            self.avatar_image.layer.cornerRadius = self.avatar_image.bounds.width / 2
+            self.avatar_background_view.layer.cornerRadius = self.avatar_background_view.bounds.width / 2
+        }
+        
+    }
     
     func configure(with repository: Repository) {
         repo_name.text = repository.name
@@ -31,9 +43,6 @@ class RepositoriesCell: UITableViewCell ,IdentifiableCell{
             Task {
                 let image = await UIImage.load(from: url)
                 avatar_image.image = image
-                
-                // Simulate progress
-                avatar_image.simulateImageLoadingProgress()
             }
         }
     }
